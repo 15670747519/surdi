@@ -1,0 +1,21 @@
+<div class="aside">
+    <?php
+        $pid = typepid($type['tid']);
+    ?>
+    <div class="mod">
+        <div class="hd">
+            {loop table="classtype" tid="$pid" limit="1"}
+            <h3>{$v['classname']}</h3>
+            {/loop}
+        </div>
+        <div class="bd">
+            <ul class="nav-aside">
+                {loop table="classtype" pid="$pid"}
+                <li{if($type['tid'] == $v['tid'] || $type['pid'] == $v['tid'])} class="on"{/if}>
+                    <a href="{$v['url']}">{$v['title']}{if($type['tid'] == $v['tid'] || $type['pid'] == $v['tid'])}<span class="spr cur pngfix"></span><span class="spr arrow pngfix"></span>{/if}</a>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+</div>

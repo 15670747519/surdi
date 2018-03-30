@@ -1,0 +1,90 @@
+
+
+.list-articles-title {
+	height: 39px;
+	line-height: 39px;
+	background-color: #2a5ba1;
+	color:white;
+	font-size: 20px;
+	padding-left: 33px;
+}
+
+.list-articles-title div{
+	width: 320px;
+	height: 39px;
+	padding-left: 38px;
+	background-color: #24457e;
+	line-height: 39px;
+}
+.list-articles-title div a {
+	display: inline;
+	line-height: 39px;
+	font-size: 14px;
+	font-weight: lighter;
+	color:#ffffff;
+}
+
+.list-articles-container {
+	background-color: #ffffff;
+	padding: 25px 57px 32px 39px;
+	margin-bottom: 35px;
+	color: #3b3b3b;
+}
+
+.list-articles-container .item {
+	height: 43px;
+	line-height: 43px;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+.list-articles-container .item i { 
+	margin-top: 0px; 
+}
+
+.list-articles-container .item a {
+	color:#212121;
+	margin-left: 22px;
+}
+
+
+.list-articles-container .list-articles-page {
+	text-align: center;
+	margin-top:25px;
+	color: #24457e;
+}
+
+.list-articles-container .list-articles-page a{
+	display: inline-block;
+	width: 78px;
+	height: 39px;
+	line-height: 39px;
+	text-align: center;
+	font-size: 14px;
+	color: #ffffff;
+}
+
+.list-articles-container .list-articles-page .pre-page {
+	background-color: #c9c9c9;
+}
+
+.list-articles-container .list-articles-page .next-page {
+	background-color: #275ca1;
+}
+
+.list-articles-container .list-articles-page .page-number {
+	display: inline-block;
+	width: 51px;
+	height: 39px;
+	line-height: 39px;
+	text-align: center;
+	font-size: 14px;
+}
+
+
+
+
+
+
+
+

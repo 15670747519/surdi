@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$type['title']}-{$GLOBALS['S']['title']}</title>
+    <meta name="keywords" content="{$type['keywords']}">
+    <meta name="description" content="{$type['description']}">
+    <link href="{$GLOBALS['WWW']}favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="{$GLOBALS['skin']}css/style.css" type="text/css"/>
+    <!-- <script type="text/javascript" src="{$GLOBALS['skin']}js/jquery.min.js"></script> -->
+    <script src="{$GLOBALS['skin']}Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="{$GLOBALS['skin']}js/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="{$GLOBALS['skin']}js/js.js"></script>
+</head>
+<body class="outer-inner-page bg_slash1 outer">
+    {include="head.html"}
+	<div class="mainouter">
+		<div class="outer-main center clearfix">
+			<div class="outer-page-content3 outer-about-leaderpage">
+				<div class="outer-page-leaderpage clearfix">
+						<div class="listmain3">
+							<img src="{$type['litpic']}" border="0" usemap="#Map">
+							<map name="Map" id="Map">
+								{loop table="classtype" pid="$type["tid"]" mshow="1" not="1" body="1" as="t"}
+								<area shape="{if ($type['pid']==0)}poly{else}rect{/if}" coords="{$t["body"]}" href="{$t['url']}">
+				                {/loop}
+							</map>
+						</div><!--listmain end-->
+				</div>
+				<div class="outer-b2top2 clearfix" id="b2top">
+					<div class="b2top_btn" id="b2top_btn">返回顶部</div>
+				</div>
+			</div>
+		</div><!--center end-->
+	</div><!--main end-->
+    {include="bottom.html"}
+</body>
+</html>

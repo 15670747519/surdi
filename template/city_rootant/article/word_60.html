@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{$article['title']}</title> <!--获取文章标题，自动更新-->
+	<meta name="keywords" content="{$article['keywords']}">
+  <meta name="description" content="{$article['description']}">
+	<link rel="stylesheet" href="/60/style/public.css">
+	<link rel="stylesheet" href="/60/style/word.css">
+</head>
+
+<body>
+	<header>
+		<div class="detail-banner"></div>
+	</header>
+	<div class="word-articles public-comWidth">
+		<div class="word-articles-title">
+			<div class="fr" href="/"><a href="/index.php?c=article&a=type&tid=95">返回首页</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/">上海市城市规划设计研究院</a></div>
+		</div>
+		<div class="word-articles-container">
+			<div class="articles-container-title">
+				<h3 class="title">{$article['title']}</h3>
+				<p claas="date">{fun date('Y-m-d H:i:s',$article['addtime'])}</p>
+			</div>
+			<div class="articles-container-content">
+				{$article['body']}
+			</div>
+			<a class="back-to-list" href="{$back}">返回列表</a>
+		</div>
+	</div>
+	<footer class="public-footer">
+		<div class="public-comWidth public-footer-container">
+			<div class="fl">Copyright &copy; 2017 上海市城市规划设计研究院 版权所有&nbsp;&nbsp;&nbsp;地址:上海市铜仁路331号&nbsp;&nbsp;沪ICP备09002944号</div>
+			<div class="fr footer-right"><img src="/60/images/footer-right.png" alt="事业单位"></div>
+		</div>
+	</footer>
+
+</body>
+
+</html>

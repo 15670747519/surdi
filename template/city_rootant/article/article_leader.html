@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$article['title']}</title>
+    <meta name="keywords" content="{$article['keywords']}">
+    <meta name="description" content="{$article['description']}">
+    <link href="{$GLOBALS['WWW']}favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="{$GLOBALS['skin']}css/style.css" type="text/css"/>
+    <script type="text/javascript">
+    var site_dir="{$GLOBALS['WWW']}";
+    </script>
+    <script type="text/javascript" src="{$GLOBALS['skin']}js/jquery.min.js"></script>
+    <script src="{$GLOBALS['skin']}Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="{$GLOBALS['skin']}js/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="{$GLOBALS['skin']}js/js.js"></script>
+</head>
+
+<body class="outer-inner-page bg_slash1 outer">
+    {include="head.html"}
+    <div class="mainouter">
+        <div class="outer-main center clearfix">
+            <div class="tab_sider">
+                <ul class="tab_sider_wrap">
+                    {loop table="classtype" pid="$type["tid"]" mshow="1" not="1" as="t"}
+                    <li{if($type['tid']==$t['tid'])} class="on"{/if}><a href="{$t['url']}"><span class="tab_sider_arrow">&gt;</span>{$t['classname']}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            <div class="outer-page-content outer-about-leaderpage">
+                <div class="outer-page-leaderpage clearfix">
+                    <div class="leaderpagemain">
+                        <div class="leader-info">
+                            <div class="leader-info-wrap clearfix">
+                                <img class="leader-avatar" src="{$article['litpic']}" width="155" height="153" alt="{$article['title']}">
+                                <div class="leader-info-base">
+                                    <div class="leader-name title2">{$article['title']}</div>
+                                    <div class="leader-role">职务/职称：{$article['position']}</div>
+                                    <div class="leader-info-other">
+                                        <div class="gender">性别：{$article['sex']}</div>
+                                        <!--<div class="wkday">参加工作年月：{fun date('Y.m',$article['addjob'])}</div>-->
+                                        <div class="vq">职业资格：{$article['vq']}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="title2 mt15">参加项目及获奖情况：</div>
+                            <div class="outer-page-p">
+                                {$article['items']}
+                            </div>
+                            <div class="title2 mt15">重要著作：</div>
+                            <div class="outer-page-p">
+                                {$article['work']}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leaderpagesider">
+                        <ul class="leader-list-sider">
+                            {loop table="article" tid="24" image="1" limit="6"} 
+                            <li><a href="{$v['url']}"><img src="{$v['litpic']}" alt="{$v['title']}"></a><span class="leader">{$v['title']}</span></li>
+                            {/loop}
+                        </ul>
+                    </div>
+                </div>
+                <div class="outer-b2top clearfix" id="b2top">
+                    <div class="b2top_btn" id="b2top_btn"><a href="{$GLOBALS['WWW']}">返回顶部</a></div>
+                </div>
+            </div>
+        </div><!--center end-->
+    </div><!--main end-->
+    {include="bottom.html"}
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+<ul>
+	{foreach $comment as $k => $s}
+    <li{if (($k+1)%2 ==0)} class="double"{/if}>
+        <a>
+            <span class="num">{$k + 1}.</span>
+            <span>网友评论：</span><span class="i">{$s['body']}</span>
+            <ul class="webwidget_rating_bar">
+            	<li style="background-image:url(/skin/city_rootant/images/web_widget_star.gif)"><div style="background-image: url(http://www.supdri.com/skin/city_rootant/images/web_widget_star.gif); width: {if ($s['score']-1>=0)}25{elseif ($s['score']>0)}{fun round($s['score']*25,2)}{/if{else}0{/if}}px; background-position: 0px -50px; "></div></li>
+            	<li style="background-image:url(/skin/city_rootant/images/web_widget_star.gif)"><div style="background-image: url(http://www.supdri.com/skin/city_rootant/images/web_widget_star.gif); width: {if ($s['score']-2>=0)}25{elseif ($s['score']-1>0)}{fun round(($s['score']-1)*25,2)}{else}0{/if}px; background-position: 0px -50px; "></div></li>
+            	<li style="background-image:url(/skin/city_rootant/images/web_widget_star.gif)"><div style="background-image: url(http://www.supdri.com/skin/city_rootant/images/web_widget_star.gif); width: {if ($s['score']-3>=0)}25{elseif ($s['score']-2>0)}{fun round(($s['score']-2)*25,2)}{else}0{/if}px; background-position: 0px -50px; "></div></li>
+            	<li style="background-image:url(/skin/city_rootant/images/web_widget_star.gif)"><div style="background-image: url(http://www.supdri.com/skin/city_rootant/images/web_widget_star.gif); width: {if ($s['score']-4>=0)}25{elseif ($s['score']-3>0)}{fun round(($s['score']-3)*25,2)}{else}0{/if}px; background-position: 0px -50px; "></div></li>
+            	<li style="background-image:url(/skin/city_rootant/images/web_widget_star.gif)"><div style="background-image: url(http://www.supdri.com/skin/city_rootant/images/web_widget_star.gif); width: {if ($s['score']-5>=0)}25{elseif ($s['score']-4>0)}{fun round(($s['score']-4)*25,2)}{else}0{/if}px; background-position: 0px -50px; "></div></li>
+            </ul>
+        </a>
+    </li>
+    {/foreach}                   
+</ul>
+<div class="pagelist">
+    <ul>
+        {$comment_page}
+    </ul>
+</div>

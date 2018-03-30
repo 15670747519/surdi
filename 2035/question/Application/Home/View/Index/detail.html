@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if IE 6]><html class="ie6 lte9 lte7 lte8"><![endif]-->
+<!--[if IE 8]><html class="ie8 lte9 lte8"><![endif]-->
+<!--[if IE 9]><html class="ie9 lte9"><![endif]-->
+<!--[if IE 7]><html class="ie7 lte9 lte7 lte8"><![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!--><html><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$period.title} - 上海总规2040</title>
+    <meta name="keywords" content="上海总规2040,市民幸福,上海规划,上海总体规划,上海2040规划,上海2040">
+    <meta name="description" content="上海总规2040">
+    <link rel="shortcut icon" href="__PUBLIC__/images/favicon.ico">
+    <link rel="stylesheet" href="__PUBLIC__/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/ThinkBox.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="__PUBLIC__/js/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+        <script src="__PUBLIC__/js/DD_belatedPNG_0.0.8a-min.js"></script>
+        <script>DD_belatedPNG.fix(".pngfix,.spr");</script>
+    <![endif]-->
+</head>
+<body>
+    <include file="Common:head" />
+    <div class="banner container">
+        <img src="__PUBLIC__/images/question/banner.jpg" alt="">
+    </div>
+
+    <!-- Main -->
+    <div class="page-full container clearfix">
+        <div class="main">
+            <div class="mod-box question">
+                <div class="mod-hd">
+                    <h2>{$period.topic} ———— {$period.title}</h2>
+                    <div class="breadcrumb">
+                        <a href="/2040/">首页</a>  &gt;  <a>问卷调查</a>
+                    </div>
+                </div>
+                <form method="post" action="{:U('/Home/Index/post')}">
+                <div class="mod-bd">
+                    <volist name="types" id="type">
+                    <dl class="qin">
+                        <dt class="clearfix">
+                            <h3>{$type.name}</h3>
+                        </dt>
+                        <volist name="questions[$type['id']]" id="question">
+                        <dd>
+                            <div class="item">{$question.order}. {$question.title}<switch name="question.type"><case value="1">【可多选】</case><case value="2">【填空】</case><case value="0">【单选】</case></switch></div>
+                            <div class="answer clearfix">
+                                <ul>
+                                    <foreach  name="question.options" item="option">
+                                    <switch name="question.type">
+                                        <case value="1">
+                                            <li><input type="checkbox" name="answer[{$option.qid}][]" value="{$option.id}" id="item-{$option.qid}-{$option.id}"><label for="item-{$option.qid}-{$option.id}">{$option.order}. {$option.name}</label><if condition="$option['addition'] eq 1">&nbsp;<input type="text" name="addition[{$option.id}]" class="inp-addition"></if></li>
+                                        </case>
+                                        <case value="2">
+                                            <li><input type="text" name="answer[{$option.qid}]" value="" id="item-{$option.qid}-{$option.id}"></li>
+                                        </case>
+                                        <case value="0">
+                                            <li><input type="radio" name="answer[{$option.qid}]" value="{$option.id}" id="item-{$option.qid}-{$option.id}"><label for="item-{$option.qid}-{$option.id}">{$option.order}. {$option.name}</label><if condition="$option['addition'] eq 1">&nbsp;<input type="text" name="addition[{$option.id}]" class="inp-addition"></if></li>
+                                        </case>
+                                    </switch>
+                                    </foreach>
+                                </ul>
+                            </div>
+                        </dd>
+                        </volist>
+                    </dl>
+                    </volist>
+                    <dl class="qin">
+                        <dt class="clearfix">
+                            <h3>基本信息</h3>
+                            <p>非常您对本次调查的支持。您的资料仅作统计分析使用，不会被泄漏给任何其他部门和个人。希望能得到您的支持和配合，非常感谢！</p>
+                        </dt>
+                        <volist name="baseQuestions" id="question">
+                        <dd>
+                            <div class="item">{$question.title}<switch name="question.type"><case value="1">【可多选】</case><case value="2">【填空】</case><case value="0">【单选】</case></switch></div>
+                            <div class="answer clearfix">
+                                <ul>
+                                    <foreach  name="question.options" item="option">
+                                    <switch name="question.type">
+                                        <case value="1">
+                                            <li><input type="checkbox" name="baseAnswer[{$option.qid}][]" value="{$option.id}" id="base-{$option.qid}-{$option.id}"><label for="base-{$option.qid}-{$option.id}">{$option.order}. {$option.name}</label><if condition="$option['addition'] eq 1">&nbsp;<input type="text" name="baseAddition[{$option.id}]" class="inp-addition"></if></li>
+                                        </case>
+                                        <case value="2">
+                                            <li><input type="text" name="baseAnswer[{$option.qid}]" value="" id="base-{$option.qid}-{$option.id}"></li>
+                                        </case>
+                                        <case value="0">
+                                            <li><input type="radio" name="baseAnswer[{$option.qid}]" value="{$option.id}" id="base-{$option.qid}-{$option.id}"><label for="base-{$option.qid}-{$option.id}">{$option.order}. {$option.name}</label><if condition="$option['addition'] eq 1"><input type="text" name="baseAddition[{$option.id}]" class="inp-addition"></if></li>
+                                        </case>
+                                    </switch>
+                                    </foreach>
+                                </ul>
+                            </div>
+                        </dd>
+                        </volist>
+                        <dd>
+                            <div class="item">请填写您的手机号及运营商</div>
+                            <div class="answer clearfix">
+                                <ul>
+                                    <li><label for="tel">手机号：</label><input type="text" name="tel" class="inp-addition"></li>
+                                    <li><label for="operator">运营商：</label> <input type="radio" name="operator" value="1" id="operator-1"><label for="operator-1">移动</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="operator" value="2" id="operator-2"><label for="operator-2">联通</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="operator" value="3" id="operator-3"><label for="operator-3">电信</label></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="mod-article-ft">
+                    <div class="mod-func">
+                        <input type="hidden" name="id" value="{$period.id}">
+                        <a href="#" class="btn btn-save">提 交</a>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <include file="Common:foot" />
+    <script src="__PUBLIC__/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script>
+    $(function(){
+        $('.btn').click(function(){
+            $(this).parents('form').submit();
+        });
+    })
+    </script>
+</body>
+</html>

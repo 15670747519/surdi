@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--[if IE 6]><html class="ie6 lte9 lte7 lte8"><![endif]-->
+<!--[if IE 8]><html class="ie8 lte9 lte8"><![endif]-->
+<!--[if IE 9]><html class="ie9 lte9"><![endif]-->
+<!--[if IE 7]><html class="ie7 lte9 lte7 lte8"><![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!--><html><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$type['title']}-{$GLOBALS['S']['title']}</title>
+    <meta name="keywords" content="{$article['keywords']}">
+    <meta name="description" content="{$article['description']}">
+    <link rel="shortcut icon" href="{$GLOBALS['WWW']}public/images/favicon.ico"/>
+    <link rel="stylesheet" href="{$GLOBALS['WWW']}public/css/reset.css">
+    <link rel="stylesheet" href="{$GLOBALS['WWW']}public/css/style.css">
+    <script type="text/javascript" src="{$GLOBALS['WWW']}public/js/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="{$GLOBALS['WWW']}public/js/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script src="{$GLOBALS['WWW']}public/js/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix(".pngfix,.spr");</script>
+    <![endif]-->
+    <!--gangyao-->
+    <style>
+        .mt15 { margin-top: 15px; }
+        .page { background: #fff; }
+        .mod-tab { line-height: 42px; background: #166d9a; position: relative; }
+        .mod-tab li { float: left; padding: 0 30px; color: #fff; font-size: 16px; font-weight: bold; border-right: 1px solid #166d9a; background: #0e5980; cursor: pointer; }
+        .mod-tab li.active { background: #2f83ae; }
+        .mod-tab li a { color: #fff; }
+        .mod-tab em { display:block; width: 13px; height: 12px; background: url({$GLOBALS["WWW"]}/public/images/write_d.png) no-repeat; position: absolute; right: 15px; top: 17px; cursor: pointer; }        
+        .mod-container .main { width: 756px; }
+        .mod-write { border: 1px solid #d2d2d2; background: #f4f4f4; }
+        .mod-write textarea { width: 970px; border: 1px solid #d2d2d2; margin: 12px auto; display: block; }
+        .mod-write fieldset { width: 970px; margin: 0 auto 12px; }
+        .mod-write input { width: 200px; height: 36px; text-indent: 1em; line-height: 36px; border: 1px solid #d2d2d2; margin-right: 10px; }
+        .mod-write button { width: 100px; height: 36px; background: #009999; border: 1px solid #009999; text-align: center; font-weight: bold; color: #fff; cursor: pointer; }
+        .page .aside { width: 244px; }
+        .nav-collapse { font-size: 14px; }
+        .nav-collapse-hd, .nav-collapse-bd li { cursor: pointer; }
+        .nav-collapse-hd { padding: 0 10px; line-height: 36px; background: #e7e7e7 url({$GLOBALS["WWW"]}/public/images/sub_down.png) no-repeat 220px center; color: #099; }
+        .active .nav-collapse-hd { background-image: url({$GLOBALS["WWW"]}/public/images/sub_up.png); }
+        .nav-collapse-bd { display: none; padding: 0 10px; }
+        .active .nav-collapse-bd { display: block; }
+        .nav-collapse-bd li { _width: 220px; line-height: 38px; border-bottom: 1px dotted #c0c0c0; color: #454545; }
+        .mod-list .title { line-height: 50px; }
+        .mod-list, .mod-list .mod-bd, .tab-item { display: none; }
+        .page .active { display: block; }
+        .tab-item, .mod-article-bd { font-size: 12px; line-height: 2; background: #fff; }
+        .tab-item h2 { font-size: 16px; text-align: center; line-height: 50px; }
+        .tab-item .info { text-align: center; color: #7e7e7e; font-size: 14px; border-top: 1px dotted #c0c0c0; border-bottom: 1px dotted #c0c0c0; }
+        .tab-item .info p { margin: 3px 0; background: #f6f6f6; font-weight: bold; }
+
+        .mod-article { padding: 2em; }
+        .mod-messages { padding: 0 28px 28px; border: 1px solid #e3e3e3; margin-top: 10px; }
+        .mod-messages dl { border-bottom: 1px dotted #c0c0c0; line-height: 2; padding: 16px 0; }
+        .mod-messages dt { font-size: 14px; color: #028bc5; }
+        .mod-messages dt,
+        .mod-messages dd { margin-bottom: 5px; } 
+        .mod-messages dd.mod-date { color: #808080; }
+        .nav-pager li.c { width: 24px; line-height: 24px; text-align: center; border: 1px solid #009999; background: #009999; color: #fff; }
+        .nav-pager li.wider a,
+        .nav-pager li.counter a { width: auto; padding: 0 2px; }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.nav-collapse').on('click', 'li', function() {
+                var pidx = $(this).parents('.nav-collapse-item').index()
+                var idx = $(this).index()
+                $('.mod-list').eq(pidx).find('.mod-bd').hide().eq(idx).show()
+            }).on('click', '.nav-collapse-item', function() {
+                var idx = $(this).index()
+                $(this).addClass('active').siblings().removeClass('active')
+                $('.mod-list').hide().eq(idx).show()
+            })
+            $('.mod-tab').on('click', 'li', function() {
+                var idx = $(this).index()
+                $(this).addClass('active').siblings().removeClass('active')
+                $('.tab-item').hide().eq(idx).show()
+            })
+            $('.buT').eq(0).click(function(){
+                $('.mod-container').eq(0).toggleClass('hide');
+            })
+            $('.buT').eq(1).click(function(){
+                $('.mod-container').eq(1).toggleClass('hide');
+            })
+        });
+    </script>
+</head>
+<body>
+    {include="head.html"}
+    <div class="banner container">
+        <img src="{$GLOBALS['WWW']}public/images/banner.jpg" alt="">
+    </div>
+    <!-- Main -->
+    <div class="page container clearfix mt15">
+        <div class="mod-tab clearfix">
+            <ul>
+                <li class="active"><a href="javascript:;">公告</a></li>
+            </ul>
+            <div class="buT"><em></em></div>
+        </div>
+        <div class="mod-container clearfix">
+            <div class="tab-item active">
+                <h2>
+                    《上海市城市总体规划（2016-2040）》草案公示
+                </h2>
+                <div class="info"><p>2016年08月22日 上海市城市总体规划编制工作领导小组</p></div>
+                <div class="mod-article">   
+                    <p>一、公示时间：8月22日至9月21日止。</p>
+                    <p>二、公示地点：</p>
+                    <p>1、上海城市规划展示馆一楼大厅，地址：上海市人民大道100号。公示期间每日16:00-20：00（19:30停止入场、周一闭馆），市民可凭有效身份证件换票入场。</p>
+                    <p>2、各区展示点<a href="{$GLOBALS["WWW"]}public/images/gongshi/fcg.pdf" target="_blank">（点击查看）</a></p>
+                    <p>3、政府网站</p>
+                    <p>“中国上海”政府门户网站：www.shanghai.gov.cn&nbsp;&nbsp;&nbsp;&nbsp;“上海2040”官方网站：www.supdri.com/2040&nbsp;&nbsp;&nbsp;&nbsp;“上海2040”官方微信公众号：shanghai2040</p>
+                    <p>三、公众参与意见收集途径</p>
+                    <p>1、“上海2040”官方网站：www.supdri.com/2040&nbsp;&nbsp;&nbsp;&nbsp;2、“上海2040”官方微信公众号：shanghai2040    3、电子邮箱：ilovesh2040@126.com    </p>
+                    <p>4、热线电话：63193413、62470681（工作日9:00-17:00）    5、邮寄地址：上海市北京西路99号，上海市城市总体规划编制工作领导小组办公室（收），邮政编码：200003。</p>
+                    <p>热忱期待广大市民积极参与，提出您的宝贵意见和建议。</p>
+<!--                     <p>附1：《上海市城市总体规划（2016-2040）文本图集（草案公示版）》</p>
+                    <p>附2：《上海市城市总体规划（2016-2040）报告（草案公示版）》</p>
+                    <p>附3：《上海市城市总体规划（2016-2040）》草案公示公众读本</p> -->
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>
+                        <a href="{$GLOBALS["WWW"]}public/ebook02/">
+                            <img src="{$GLOBALS["WWW"]}public/images/gongshi/1.jpg" alt="">
+                        </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{$GLOBALS["WWW"]}public/ebook01/">
+                            <img src="{$GLOBALS["WWW"]}public/images/gongshi/2.jpg" alt="">
+                        </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{$GLOBALS["WWW"]}public/images/gongshi/3.pdf" target="_blank">
+                            <img src="{$GLOBALS["WWW"]}public/images/gongshi/3.jpg" alt="">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mod-tab clearfix">
+            <ul>
+                <li class="active">我要留言</li>
+            </ul>
+            <div class="buT"><em></em></div>
+        </div>
+        <div class="mod-container mod-write clearfix">
+            <form action="{$GLOBALS["WWW"]}index.php?c=message&a=add&tid={$type['tid']}" method="post">
+                <input type="hidden" name="title" value="总规公示留言">
+                {if($fmolds && $faid)}
+                <input name="fmolds" type="hidden" value="{$fmolds}" />
+                <input name="faid" type="hidden" value="{$faid}" />
+                {/if}
+                <textarea name="body" id="" cols="30" rows="10" onfocus="if (this.value == '请输入您要说的话......') {this.value = '';}" onblur="if (this.value == '') {this.value = '请输入您要说的话......';}">请输入您要说的话......</textarea>
+                <fieldset>
+                    <input type="text" name="name" value="请输入您的姓名" onfocus="if (this.value == '请输入您的姓名') {this.value = '';}" onblur="if (this.value == '') {this.value = '请输入您的姓名';}" class="inp_txt pull-left">
+                    <input type="text" name="mobile" value="请输入您的手机" onfocus="if (this.value == '请输入您的手机') {this.value = '';}" onblur="if (this.value == '') {this.value = '请输入您的手机';}" class="inp_txt pull-left">
+                    <button type="submit" class="pull-right">提交</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="mod-messages">
+            <ul class="list-text">
+                {foreach $lists as $s}
+                <dl>
+                    <dt>{$s['user']}：</dt>
+                    <dd>
+                    {$s['body']}
+                    </dd>
+                    <dd class="mod-date">
+                        {fun date('Y-m-d H:i:s',$s['addtime'])}
+                    </dd>
+                </dl>
+                {/foreach}
+            </ul>
+            <div class="pager clearfix">
+                <ul class="nav-pager clearfix">
+                    {$pages}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {include="foot.html"}
+    <!-- Common JS -->
+    <script src="{$GLOBALS['WWW']}public/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="{$GLOBALS['WWW']}public/js/common.js"></script>
+</body>
+</html>

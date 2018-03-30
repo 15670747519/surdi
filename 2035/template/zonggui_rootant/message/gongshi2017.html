@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if IE 6]><html class="ie6 lte9 lte7 lte8"><![endif]-->
+<!--[if IE 8]><html class="ie8 lte9 lte8"><![endif]-->
+<!--[if IE 9]><html class="ie9 lte9"><![endif]-->
+<!--[if IE 7]><html class="ie7 lte9 lte7 lte8"><![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!--><html><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$type['title']}-{$GLOBALS['S']['title']}</title>
+    <meta name="keywords" content="{$article['keywords']}">
+    <meta name="description" content="{$article['description']}">
+    <link rel="shortcut icon" href="{$GLOBALS['WWW']}public/images/favicon.ico"/>
+    <link rel="stylesheet" href="{$GLOBALS['WWW']}public/css/reset.css">
+    <link rel="stylesheet" href="{$GLOBALS['WWW']}public/css/style.css">
+    <script type="text/javascript" src="{$GLOBALS['WWW']}public/js/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="{$GLOBALS['WWW']}public/js/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script src="{$GLOBALS['WWW']}public/js/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix(".pngfix,.spr");</script>
+    <![endif]-->
+    <!--gangyao-->
+    <style>
+        .mt15 { margin-top: 15px; }
+        .page { background: #fff; }
+        .mod-tab { line-height: 42px; background: #166d9a; position: relative; }
+        .mod-tab li { float: left; padding: 0 30px; color: #fff; font-size: 16px; font-weight: bold; border-right: 1px solid #166d9a; background: #0e5980; cursor: pointer; }
+        .mod-tab li.active { background: #2f83ae; }
+        .mod-tab li a { color: #fff; }
+        .mod-tab em { display:block; width: 13px; height: 12px; background: url({$GLOBALS["WWW"]}/public/images/write_d.png) no-repeat; position: absolute; right: 15px; top: 17px; cursor: pointer; }        
+        .mod-container .main { width: 756px; }
+        .mod-write { border: 1px solid #d2d2d2; background: #f4f4f4; }
+        .mod-write textarea { width: 970px; border: 1px solid #d2d2d2; margin: 12px auto; display: block; }
+        .mod-write fieldset { width: 970px; margin: 0 auto 12px; }
+        .mod-write input { width: 200px; height: 36px; text-indent: 1em; line-height: 36px; border: 1px solid #d2d2d2; margin-right: 10px; }
+        .mod-write button { width: 100px; height: 36px; background: #009999; border: 1px solid #009999; text-align: center; font-weight: bold; color: #fff; cursor: pointer; }
+        .page .aside { width: 244px; }
+        .nav-collapse { font-size: 14px; }
+        .nav-collapse-hd, .nav-collapse-bd li { cursor: pointer; }
+        .nav-collapse-hd { padding: 0 10px; line-height: 36px; background: #e7e7e7 url({$GLOBALS["WWW"]}/public/images/sub_down.png) no-repeat 220px center; color: #099; }
+        .active .nav-collapse-hd { background-image: url({$GLOBALS["WWW"]}/public/images/sub_up.png); }
+        .nav-collapse-bd { display: none; padding: 0 10px; }
+        .active .nav-collapse-bd { display: block; }
+        .nav-collapse-bd li { _width: 220px; line-height: 38px; border-bottom: 1px dotted #c0c0c0; color: #454545; }
+        .mod-list .title { line-height: 50px; }
+        .mod-list, .mod-list .mod-bd, .tab-item { display: none; }
+        .page .active { display: block; }
+        .tab-item, .mod-article-bd { font-size: 12px; line-height: 2; background: #fff; }
+        .tab-item h2 { font-size: 16px; text-align: center; line-height: 50px; }
+        .tab-item .info { text-align: center; color: #7e7e7e; font-size: 14px; border-top: 1px dotted #c0c0c0; border-bottom: 1px dotted #c0c0c0; }
+        .tab-item .info p { margin: 3px 0; background: #f6f6f6; font-weight: bold; }
+
+        .mod-article { padding: 2em; }
+        .mod-messages { padding: 0 28px 28px; border: 1px solid #e3e3e3; margin-top: 10px; }
+        .mod-messages dl { border-bottom: 1px dotted #c0c0c0; line-height: 2; padding: 16px 0; }
+        .mod-messages dt { font-size: 14px; color: #028bc5; }
+        .mod-messages dt,
+        .mod-messages dd { margin-bottom: 5px; } 
+        .mod-messages dd.mod-date { color: #808080; }
+        .nav-pager li.c { width: 24px; line-height: 24px; text-align: center; border: 1px solid #009999; background: #009999; color: #fff; }
+        .nav-pager li.wider a,
+        .nav-pager li.counter a { width: auto; padding: 0 2px; }
+        .scene { border: 1px solid #ddd; border-left: none; margin: 0 auto; }
+        .scene>tbody>tr>td, .scene>tbody>tr>th, .scene>tfoot>tr>td, .scene>tfoot>tr>th, .scene>thead>tr>td, .scene>thead>tr>th {
+            padding: .7rem;
+            line-height: 1.6;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+        table.scene>thead>tr>th {
+            vertical-align: bottom;
+            border-bottom: 1px solid #ddd;
+        }
+        .scene>tbody>tr>td, .scene>tbody>tr>th, .scene>tfoot>tr>td, .scene>tfoot>tr>th, .scene>thead>tr>td, .scene>thead>tr>th {
+            border-left: 1px solid #ddd;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.nav-collapse').on('click', 'li', function() {
+                var pidx = $(this).parents('.nav-collapse-item').index()
+                var idx = $(this).index()
+                $('.mod-list').eq(pidx).find('.mod-bd').hide().eq(idx).show()
+            }).on('click', '.nav-collapse-item', function() {
+                var idx = $(this).index()
+                $(this).addClass('active').siblings().removeClass('active')
+                $('.mod-list').hide().eq(idx).show()
+            })
+            $('.mod-tab').on('click', 'li', function() {
+                var idx = $(this).index()
+                $(this).addClass('active').siblings().removeClass('active')
+                $('.tab-item').hide().eq(idx).show()
+            })
+            $('.buT').eq(0).click(function(){
+                $('.mod-container').eq(0).toggleClass('hide');
+            })
+            $('.buT').eq(1).click(function(){
+                $('.mod-container').eq(1).toggleClass('hide');
+            })
+        });
+    </script>
+</head>
+<body>
+    {include="head.html"}
+    <div class="banner container">
+        <img src="{$GLOBALS['WWW']}public/images/banner.jpg" alt="">
+    </div>
+    <!-- Main -->
+    <div class="page container clearfix mt15">
+        <div class="mod-tab clearfix">
+            <ul>
+                <li class="active"><a href="javascript:;">公告</a></li>
+            </ul>
+            <div class="buT"><em></em></div>
+        </div>
+        <div class="mod-container clearfix">
+            <div class="tab-item active">
+                <h2>
+                    《上海市崇明区总体规划暨土地利用总体规划（2016-2040）》草案公示公告
+                </h2>
+                <div class="info"><p>2017年7月20日　上海市崇明区人民政府</p></div>
+                <div class="mod-article">   
+                    <p>《上海市崇明区总体规划暨土地利用总体规划（2016-2040）》由上海市崇明区人民政府会同上海市规划和国土资源管理局组织编制，由中国城市规划设计研究院上海分院联合上海市地质调查研究院承担编制，自2015年初启动，截至目前已形成规划草案，开展公示工作，广泛征求公众意见，现将公示信息公告如下。</p>
+                    <p>公示时间：2017年7月20日—2017年8月19日 </p>
+                    <p>网站公示：上海市崇明政府网http://www.cmx.gov.cn </p>
+                    <p>上海市规划和国土资源管理局http://www.shgtj.gov.cn</p>
+                    <p>现场公示：崇明规划展示馆及全区18个建制镇（乡）文化活动中心</p>
+                    <p align="center">
+                        <table style="text-align: center;" class="scene"> <thead><tr>  <th class="" style="text-align: center;">  <b><span style="font-size: 12pt; color: black;">乡镇</span></b>  </th>  <th style="text-align: center;">  <b><span style="font-size: 12pt; color: black;">公示地点</span></b>  </th>  <th style="text-align: center;">  <b><span style="font-size: 12pt; color: black;">开放时间</span></b>  </th> </tr></thead><tbody> <tr>  <td>  <span style="color: black;">----</span>  </td>  <td class="">  <span style="color: black;">崇明规划展示馆1楼临展区（城桥镇崇明大道7918号）</span>  </td>  <td>  <span style="color: black;">周二至周日9:00-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">长兴镇</span>  </td>  <td>  <span style="color: black;">长兴镇文广中心（长兴镇凤凰公路142号）</span>  </td>  <td>  <span style="color: black;">周一至周五8:30-11:00,13:00-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">横沙乡</span>  </td>  <td>  <span style="color: black;">横沙乡社区文化活动中心1楼（新民镇新环路57号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:00-20:00</span>  </td> </tr> <tr>  <td>  <span style="color: black;">新村乡</span>  </td>  <td class="">  <span style="color: black;">新村乡社区文化活动中心（新村乡星村公路2128号）</span>  </td>  <td>  <span style="color: black;">周一至周五6:00-17:00</span>  </td> </tr> <tr>  <td>  <span style="color: black;">绿华镇</span>  </td>  <td>  <span style="color: black;">绿华镇社区文化活动中心（绿华镇嘉华路8号）</span>  </td>  <td>  <span style="color: black;">周一至周五8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">三星镇</span>  </td>  <td>  <span style="color: black;">三星镇社区文化活动中心（宏海公路4291号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">庙&nbsp; 镇</span>  </td>  <td>  <span style="color: black;">庙镇社区文化活动中心（庙镇剧场路12号）</span>  </td>  <td>  <span style="color: black;">周一至周日8：00-16:00</span>  </td> </tr> <tr>  <td>  <span style="color: black;">港西镇</span>  </td>  <td>  <span style="color: black;">港西镇社区文化活动中心（港西镇三双公路1573号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">城桥镇</span>  </td>  <td>  <span style="color: black;">城桥镇社区文化活动中心（城桥镇大陈路8弄1~19号）</span>  </td>  <td>  <span style="color: black;">周一至周五8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">建设镇</span>  </td>  <td>  <span style="color: black;">建设镇社区文化活动中心1楼（建设公路1259号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">新河镇</span>  </td>  <td>  <span style="color: black;">新河镇文化活动中心（新河镇新开河路628号）</span>  </td>  <td>  <span style="color: black;">周一至周五8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">竖新镇</span>  </td>  <td>  <span style="color: black;">竖新镇社区文化活动中心（竖新镇团城公路1918号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">堡&nbsp; 镇</span>  </td>  <td>  <span style="color: black;">堡镇社区文化活动中心（堡镇正大街118号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">港沿镇</span>  </td>  <td>  <span style="color: black;">港沿镇文化体育广播电视站（港沿公路1198号）</span>  </td>  <td>  <span style="color: black;">周一至周五8:30-11：30，13：30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">向化镇</span>  </td>  <td>  <span style="color: black;">向化镇社区文化活动中心（陈彷公路4927号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:30-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">中兴镇</span>  </td>  <td>  <span style="color: black;">中兴镇社区文化活动中心（中兴镇兴工路57号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:00-16:30</span>  </td> </tr> <tr>  <td>  <span style="color: black;">陈家镇</span>  </td>  <td>  <span style="color: black;">陈家镇社区文化活动中心（陈家镇裕国路388号）</span>  </td>  <td>  <span style="color: black;">周一至周日9:00-16:00</span>  </td> </tr> <tr>  <td>  <span style="color: black;">新海镇</span>  </td>  <td>  <span style="color: black;">新海镇社区文化活动中心（北沿公路3366号）</span>  </td>  <td>  <span style="color: black;">周一至周日8:30-16:30</span>  </td> </tr> <tr>  <td style="text-align: center;">  <span style="color: black;">东平镇</span>  </td>  <td style="text-align: center;">  <span style="color: black;">东平镇社区文化活动中心1楼（东平镇东冉路北首）</span>  </td>  <td style="text-align: center;">  <span style="color: black;">周一至周五8:30-16:3018:30-20:00</span>  <span style="color: black;">周六、周日18:30-20:00</span>  </td> </tr></tbody></table>
+                    </p>
+                    <p>意见征集方式：</p>
+                    <p>1、电子邮件  chongming2040@126.com</p>
+                    <p>2、电话联系  021-39306156 （周一至周五9:00-11:00，13:30-17:00）</p>
+                    <p>3、通信方式  地址：崇明城桥镇崇明大道7918号崇明规划展示馆，收件人：崇明2040意见收集组，邮编：202150</p>
+                    <p>还可以关注“上海崇明”、“上海2040”、“上海规土”、“上海发布”微信公众号，浏览草案公示微信版，并可在“上海崇明”微信平台上留言。</p>
+                    <p>公示期间不反馈意见。公示结束后，组织编制单位将收到的意见进行汇总，分类描述意见，并积极采纳，规划批准后，采纳情况及理由通过原公示渠道公开。</p>
+                    <p>&nbsp;</p>
+                    <p>特此公告</p>
+                    <p align="right">上海市崇明区人民政府</p>
+                    <p align="right">2017年7月20日</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p align="center">
+                        <a href="{$GLOBALS["WWW"]}public/ebook05/" target="_blank">
+                            <img src="{$GLOBALS["WWW"]}public/images/gongshi/4.jpg" alt="">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {include="foot.html"}
+    <!-- Common JS -->
+    <script src="{$GLOBALS['WWW']}public/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="{$GLOBALS['WWW']}public/js/common.js"></script>
+</body>
+</html>

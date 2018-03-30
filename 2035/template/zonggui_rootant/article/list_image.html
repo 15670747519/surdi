@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if IE 6]><html class="ie6 lte9 lte7 lte8"><![endif]-->
+<!--[if IE 8]><html class="ie8 lte9 lte8"><![endif]-->
+<!--[if IE 9]><html class="ie9 lte9"><![endif]-->
+<!--[if IE 7]><html class="ie7 lte9 lte7 lte8"><![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!--><html><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$type['title']}-{$GLOBALS['S']['title']}</title>
+    <meta name="keywords" content="{$type['keywords']} " />
+    <meta name="description" content="{$type['description']} ">
+    <link rel="shortcut icon" href="{$GLOBALS['WWW']}public/images/favicon.ico"/>
+    <link rel="stylesheet" href="{$GLOBALS['WWW']}public/css/reset.css">
+    <link rel="stylesheet" href="{$GLOBALS['WWW']}public/css/style.css">
+    <script type="text/javascript" src="{$GLOBALS['WWW']}public/js/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="{$GLOBALS['WWW']}public/js/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+        <script src="{$GLOBALS['WWW']}public/js/DD_belatedPNG_0.0.8a-min.js"></script>
+        <script>DD_belatedPNG.fix(".pngfix,.spr");</script>
+    <![endif]-->
+</head>
+<body>
+    {include="head.html"}
+    
+    <div class="banner container">
+        <img src="{$GLOBALS['WWW']}public/images/banner.jpg" alt="">
+    </div>
+
+    <!-- Main -->
+    <div class="page container clearfix">
+        <div class="main">
+            <div class="mod-box mod-list">
+                <div class="mod-hd">
+                    <h2>{$type['classname']}</h2>
+                    <div class="breadcrumb">
+                        {$positions}
+                    </div>
+                </div>
+                <div class="mod-list-bd">
+                    <ul class="list-pic">
+                        {foreach $lists as $v}
+                        <li><a href="{$v['url']}" class="clearfix">
+                            <div class="mod-l">
+                                <div class="mod">
+                                    <span class="title ellipsis">&#183; {fun newstr($v['title'], 90)}</span>
+                                    <span class="teaser">{fun newstr($v['description'], 220)}</span>
+                                    <span class="date">{fun date('Y年m月d日',$v['addtime'])}</span>
+                                </div>
+                            </div>
+                            <div class="mod-r"><img src="{$v['litpic']}" alt="" width="185" height="120"></div>
+                        </a></li>
+                        {/foreach}
+                    </ul>
+                    <div class="pager clearfix">
+                        <ul class="nav-pager clearfix">
+                            {$pages}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include="aside.html"}
+    </div>
+    {include="foot.html"}
+
+    <!-- Common JS -->
+    <script src="{$GLOBALS['WWW']}public/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="{$GLOBALS['WWW']}public/js/common.js"></script>
+</body>
+</html>

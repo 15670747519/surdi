@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if IE 6]><html class="ie6 lte9 lte7 lte8"><![endif]-->
+<!--[if IE 8]><html class="ie8 lte9 lte8"><![endif]-->
+<!--[if IE 9]><html class="ie9 lte9"><![endif]-->
+<!--[if IE 7]><html class="ie7 lte9 lte7 lte8"><![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!--><html><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>调查问卷 - 上海总规2040</title>
+    <meta name="keywords" content="上海总规2040,市民幸福,上海规划,上海总体规划,上海2040规划,上海2040">
+    <meta name="description" content="上海总规2040">
+    <link rel="shortcut icon" href="__PUBLIC__/images/favicon.ico">
+    <link rel="stylesheet" href="__PUBLIC__/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/ThinkBox.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="__PUBLIC__/js/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+        <script src="__PUBLIC__/js/DD_belatedPNG_0.0.8a-min.js"></script>
+        <script>DD_belatedPNG.fix(".pngfix,.spr");</script>
+    <![endif]-->
+</head>
+<body>
+    <include file="Common:head" />
+    <div class="banner container">
+        <img src="__PUBLIC__/images/question/banner.jpg" alt="">
+    </div>
+
+    <!-- Main -->
+    <div class="page-full container clearfix">
+        <div class="main">
+            <div class="mod-box question">
+                <div class="mod-hd">
+                    <h2>“上海，我的2040”愿景调查</h2>
+                    <div class="breadcrumb">
+                        <a href="/2040/">首页</a>  &gt;  <a>问卷调查</a>
+                    </div>
+                </div>
+                <div class="mod-bd">
+                    <dl class="green">
+                        <dt class="clearfix">
+                            <h3>活动介绍</h3>
+                        </dt>
+                        <dd>
+                            <p>上海市第六次规划土地工作会议于不久前召开，标志着上海新一轮城市总体规划编制工作正式启动。新一轮城市总体规划的期限确定为2040年，将指导上海未来20多年的城市发展、建设和管理。“开门做规划”是本次规划的最大亮点，社会公众、专家和媒体将全程参与。</p>
+                            <p>“上海，我的2040”愿景调查旨在获悉您对上海2040年发展的期许。您的意见对上海新一轮城市总体规划编制非常重要。愿广大市民积极参与，为建设我们的美好家园出谋划策。</p>
+                            <p>衷心感谢您的支持，谢谢！ </p>
+                        </dd>
+                    </dl>
+                    <dl class="blue">
+                        <dt class="clearfix">
+                            <h3>调查说明</h3>
+                        </dt>
+                        <dd>
+                            <p>1、   本次愿景调查将分三期进行。目前正在进行第一期问卷调查，活动时间截止至8月2日。8月上旬我们将陆续推出第二期和第三期问卷调查。</p>
+                            <p>2、  本次愿景调查的结果仅用于统计分析，您的资料不会被泄漏给其他任何部门和个人。</p>
+                            <p>3、  第一期问卷为13道选择题，分为单选和多选题。单选题只能选择1个选项，多选题可以选择1个及1个以上选项。</p>
+                        </dd>
+                    </dl>
+                    <dl class="orange">
+                        <dt class="clearfix">
+                            <h3>参与有奖</h3>
+                        </dt>
+                        <dd>
+                            <p>1、   调查问卷结束后，请留下您的联系方式。每位成功填写问卷和联系方式的市民将有机会参与抽奖。</p>
+                            <p>2、  每期活动我们将随机抽取2位中奖者，中奖者将获得300元手机话费。</p>
+                            <p>3、  每期活动结束后我们将公布中奖名单（手机前三位和后四位），并在名单公布后的15个工作日内为中奖者完成手机充值。</p>
+                        </dd>
+                        <div class="gift pngfix"></div>
+                    </dl>
+                </div>
+                <div class="mod-list">
+                    <Volist name="periods" id="period">
+                    <dl class="<if condition="$period['start'] lt time() && $period['till'] gt time()">active</if> clearfix">
+                        <dt>
+                            <h3>{$period.title}</h3>
+                            <if condition="$period['start'] lt time()">
+                            <p>活动时间截止至{$period.till|date='m月d日',###}</p>
+                            <else if condition="$period['till'] lt time()"/>
+                            <p>已经结束</p>
+                            <else/>
+                            <p>即将开始，敬请期待</p>
+                            </if>
+                            <if condition="$period['start'] lt time()">
+                                <a href="{:U('/Home/Index/detail','id='.$period['id'])}" class="pngfix"><span>开始填写</span></a>
+                            <else if condition="$period['till'] lt time()"/>
+                                <a href="javascript:void(0);" class="pngfix"><span>已经结束</span></a>
+                            <else/>
+                                <a href="javascript:void(0);" class="pngfix"><span>敬请期待</span></a>
+                            </if>
+                        </dt>
+                        <dd>
+                            <img src="__PUBLIC__/images/question/{$period.banner}" alt="">
+                        </dd>
+                    </dl>
+                    </Volist>
+                </div>
+                <div class="mod-article-ft">
+                    <div class="mod-func">
+                        <a href="/2040" class="back">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Common:foot" />
+    <script src="__PUBLIC__/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+footer,header {
+    margin: 0;
+    padding: 0;
+}
+ul, ol { list-style: none; }
+a { 
+	text-decoration: none;
+	display: block; 
+}
+i { display: block; }
+div,i,a,li{ box-sizing: border-box }
+body { 
+	background-color: #f0f1f1;
+	min-width: 1200px;
+	font-family: "微软雅黑";
+}
+
+i {
+	width: 21px;
+	padding: 3px 7px 0px 5px;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.clear {
+	height: 0;
+	clear:both;
+}
+
+.public-comWidth {
+	width: 1172px;
+	margin:0 auto;
+}
+
+.public-footer {
+	height: 107px;
+	width: 100%;
+	background-color: #275ca1;
+}
+
+.public-footer .public-footer-container{
+	height: 107px;
+	line-height: 107px;
+	color: white;
+	font-size: 12px;
+	font-weight: lighter;
+}
+
+.public-footer .public-footer-container .footer-right {
+	margin-top:22px;
+}
+
+.detail-banner {
+	height: 211px;
+	width: 100%;
+	background: url(../images/banner-detail.png) center no-repeat;
+}

@@ -1,0 +1,38 @@
+<!-- Header -->
+<div class="header">
+    <div class="top">
+        <div class="container clearfix">
+<!--             <form action="{$GLOBALS['WWW']}index.php"  method="get" class="form-search pull-left">
+                <input name="a" type="hidden" value="search">
+                <input name="c" type="hidden" value="article">
+                <input type="text" name="word" placeholder="请输入关键字..." class="text"><input type="submit" value="搜索" class="spr btn text-hide">
+            </form> -->
+            <div class="social pull-right">
+                <a href="http://weibo.com/shghgtzy"><span class="spr icon weibo"></span>官方微博</a>
+                <a href="#" class="wx"><span class="spr icon weixin"></span>官方微信<img src="{$GLOBALS['WWW']}public/images/qr.jpg" alt="" class="qr" style="display:none;"></a>
+            </div>
+        </div>
+    </div>
+    <div class="mod container clearfix">
+        <div class="hd pull-left">
+            <a href="{$GLOBALS['WWW']}" class="logo"><img src="{$GLOBALS['WWW']}public/images/logo.jpg" alt="上海总规2040"></a>
+            <div class="loading">进行中...</div>
+        </div>
+        <div class="bd pull-right J-nav">
+            <ul class="nav clearfix">
+                <li><a href="{$GLOBALS['WWW']}" class="pn n0 text-hide">首页</a></li>
+                {loop table="classtype" mshow="1"}
+                <li{if(($type['pid'] == $v['tid']) || ($type['tid'] == $v['tid']))} class="on"{/if}>
+                    <a href="{$v['url']}" class="pn n{$v['n']} text-hide">{$v['classname']}</a>
+                    <ul class="sub">
+                    {loop table="classtype" pid="$v['tid']" as="v1" mshow="1"}
+                        <li><a href="{$v1['url']}" class="sn">{$v1['classname']}</a></li>
+                    {/loop}
+                    </ul>
+                {/loop}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /Header -->

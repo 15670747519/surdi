@@ -1,0 +1,166 @@
+
+<div class="footer_inner">
+    <div class="center">
+        <span class="copyright">Copyright © 2013 上海市城市规划设计研究院 版权所有   地址:上海市铜仁路331号  沪ICP备09002944号 <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F85c5ea6dfc71a96ff5cf6a2d1c228737' type='text/javascript'%3E%3C/script%3E"));
+</script></span>
+        <!-- 
+        <span class="about">{loop table="classtype" tid="1" limit="1"}<a href="{$v['url']}">{$v['classname']}</a>{/loop}  |  {loop table="classtype" tid="47" limit="1"}<a href="{$v['url']}">{$v['classname']}</a>{/loop}</span> 
+        -->
+    </div>
+</div>
+<div class="footer_outer">
+    <div class="center footer-links" style="height:20px;">
+        <ul>
+            {loop table="links" taid="1"}
+            <li><a href="{$v['gourl']}"><span>{$v['name']}</span></a></li>
+            {/loop}
+            <li>
+                <a href="javascript:;"><span>上海市规划和国土系统</span><span class="more"></span></a>
+                
+            </li>
+            <li>
+                <a href="javascript:;"><span>相关规划设计研究院</span><span class="more"></span></a>
+            </li>
+            <li class="last">
+                <a href="javascript:;"><span>相关杂志</span><span class="more"></span></a>
+                
+            </li>
+
+        </ul>
+    </div>
+    <div class="sub-links center">
+        <ul class="footer-main"></ul>
+        <ul class="footer-main"></ul>
+        <ul class="footer-main"></ul>
+        <ul class="footer-main clearfix">
+            {loop table="links" taid="2"}
+            <li><a href="{$v['gourl']}"><span>{$v['name']}</span></a></li>
+            {/loop}
+        </ul>
+        <ul class="footer-main clearfix">
+            {loop table="links" taid="3"}
+            <li><a href="{$v['gourl']}"><span>{$v['name']}</span></a></li>
+            {/loop}
+        </ul>
+         <ul class="footer-main clearfix">
+            {loop table="links" taid="4"}
+            <li><a href="{$v['gourl']}"><span>{$v['name']}</span></a></li>
+            {/loop}
+        </ul>
+    </div> 
+</div>
+<div style="text-align:center;position:relative;width:100%;float:left;">
+    <script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/02/000/0000/60704975/CA020000000607049750001.js' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+    {loop table="ads" taid="10" type="1"} 
+    <div class="duilian duilian_left">
+    <div class="duilian_con">{$v['body']}</div>
+        <a href="javascript:;" class="duilian_close">[关闭]</a>
+    </div>
+    {/loop}
+    {loop table="ads" taid="10" type="1"}
+    <div class="duilian duilian_right">
+    <div class="duilian_con">{$v['body']}</div>
+        <a href="javascript:;" class="duilian_close">[关闭]</a>
+    </div>
+    {/loop}
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var duilian = $("div.duilian");
+
+        //var window_w = $(window).width();
+        //if(window_w>1000){duilian.show();}
+
+        $(window).scroll(function(){
+            var scrollTop = $(window).scrollTop();
+            duilian.stop().animate({top:scrollTop+200});
+        });
+        var duilian_close = $("a.duilian_close");
+        duilian_close.click(function(){
+            $(this).parent().hide();
+            //return false;
+        });
+    });
+    </script>
+
+<script type="text/javascript">
+ $(function(){
+//             //调用漂浮插件
+            // $("body").floatAd({
+            //     imgSrc : 'http://wenwen.soso.com/p/20100204/20100204193850-483274619.jpg',
+            //     url:'http://www.baidu.com'
+            // });
+ // $("body").floatAd({
+ //            imgSrc : '/uploads/2013/06/251002329944.jpg',
+ //            url:"/special/jy/jygy-info.html"
+ //        });
+ {loop table="ads" taid="9" type="1" limit="1"} 
+        $("body").floatAd({
+            imgSrc : '{$v['adfile']}',
+            url:"{$v['gourl']}"
+        });
+        {/loop}
+            });
+
+    jQuery(".outerslide").slide({effect:"fold",autoPlay:true});
+    
+    $("#b2top").hide();
+    $(function () {
+        var $sml = Math.floor($(window).width()-1000)/2+1000;
+        $("#b2top").css("left",$sml+'px');
+        $(window).resize(function(){
+            var $sml = Math.floor($(window).width()-1000)/2+1000;
+            $("#b2top").css("left",$sml+'px');
+        });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#b2top').fadeIn();
+            } else {
+                $('#b2top').fadeOut();
+            }
+        });
+        $('#b2top_btn').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+
+        
+    });
+    
+    $(".dept_entry").hover(function(){
+        $(".dept_list").fadeIn();
+    });
+    $(".dept_list").mouseleave(function(){
+        $(this).fadeOut();
+    });
+    $(".fn_ico").hover(function(){
+        $(this).toggleClass("on");
+    });
+
+    $('.footer-main').hide();
+    $(".footer-links > ul > li").click(function(){
+        var $outer=$(".footer_outer");
+        $i=$(this).index();
+        var $on = $('.footer-main').eq($i);
+        if($on.is(':visible')){
+            $($outer).animate({'margin-top':"0px","height":"40px"});
+            $('.footer-main').hide();
+        }else{
+            if($('.footer-main:visible').length>0){
+                $('.footer-main').hide();
+                $on.show();
+            }else{
+                $($outer).animate({'margin-top':"-140px","height":"180px"});
+                $on.slideDown().show();
+            }
+            
+        }
+
+    });
+    
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=57589455" charset="UTF-8"></script>

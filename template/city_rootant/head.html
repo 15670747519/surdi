@@ -1,0 +1,80 @@
+<div class="header_outer">
+    {if ($positions)}
+    <div class="header_border">
+    {/if}
+        <div class="center clearfix">
+            <div class="floor1">
+                <div class="logo">
+                    <img src="{$GLOBALS['skin']}images/logo_outer.png">
+                </div>
+                <div class="loginarea clearfix">
+                    <div class="lang">
+                        <div class="enter"></div>
+                        <div class="cn"></div>
+                        <span><a href="/index.php?c=article&a=type&tid=9">中文</a></span>
+                        <div class="en"></div>
+                        <span><a href="javascript:;">ENGLISH</a></span>
+                    </div>
+                    <div class="maillogin clearfix">
+                        <form name="form_wm"  method="post" target="_blank">
+                        <span class="fl">用户名：</span>
+                        <input class="text fl" type="Text" name="usr"> 
+                        <span class="fl ml5">&nbsp;@supdri.com | 密码：</span>
+                        <input class="text fl" type="Password" name="pass">
+                        <input class="text2 fl ml5" type="button" name=" " value="登录"  onclick="return check();">
+                        <input type="hidden" value="gb" name="chr">
+                        <input type="hidden" value="login" name="func">
+                        <input type="hidden" value="supdri.com" name="domain">
+                        <input name="domain2" type="hidden">
+                        <input name="verifycookie" type="hidden">
+                        <input name="verifyip" type="hidden">
+                        </form>
+                    </div>
+                </div>
+            </div><!--floor1 end-->
+            <div class="floor2">
+                <div class="nav fl">
+                    <ul >
+                        <li class="menu">
+                            <a href="{$GLOBALS['WWW']}">首页</a>
+                        </li>
+                        {loop table="classtype" mshow="1" limit="7"}
+                        <li class="menu">
+                            <a href="{$v['url']}"{if (($v['tid']==$type['tid'])||($v['tid']==$type['pid']))} class="active"{/if}>{$v['classname']}</a>
+                            <ul>
+                                {loop table="classtype" pid="$v['tid']" as="v1"}
+                                <li><a href="{$v1['url']}">{$v1['classname']}</a></li>
+                                {/loop}
+                            </ul>
+                        </li>
+                        {/loop}
+                    </ul>
+                </div>
+<!--                 <form action="{$GLOBALS['WWW']}index.php" method="get">
+                    <input class="text3 fl" type="Text" name="word" placeholder="输入关键字搜索...">
+                    <input name="a" type="hidden" value="search">
+                    <input name="c" type="hidden" value="article">
+                    <input class="search fl" type="submit" name="search" value=""> 
+                </form> -->
+            </div><!--floor2 end-->
+        </div><!--center end-->
+    </div>
+    {if ($positions)}
+    <div class="floor3">
+        <div class="center clearfix">
+            <div class="breadcrumbs">
+                {$positions}
+            </div>
+            <div class="fn_floor">
+                {if($aprev)}
+                <span class="fn_ico fn_floor_1 first-child" title="{$aprev['title']}" onclick="javascript:location.href='{$aprev['url']}';"></span>
+                {/if}
+                {if($anext)}
+                <span class="fn_ico middle{if(!$aprev)}fn_floor_1{/if} fn_floor_2 first-child" title="{$anext['title']}" onclick="javascript:location.href='{$anext['url']}';"></span>
+                {/if}
+                <span class="fn_ico {if((!$anext)&&$aprev||(!$aprev)&&$anext)} end{/if} fn_floor_3 first-child" onclick="javascript:history.go(-1);"></span>
+            </div>
+        </div>
+    </div><!--floor3 end-->
+    {/if}
+</div><!--header_outer end-->

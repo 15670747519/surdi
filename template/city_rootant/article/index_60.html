@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>上海市城市规划设计研究院</title>
+	<meta name="Keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="/60/style/public.css">
+	<link rel="stylesheet" href="/60/style/index.css">
+</head>
+
+<body>
+
+	<header>
+		<div class="index-banner"></div>
+	</header>
+
+	<div class="public-comWidth index-hot-article">
+		<div class="title">
+			<span class="fl">热门文章</span>
+			{loop table="classtype" tid="96" limit="1"}
+			<a class="fr" href="{$v['url']}">查看更多</a>
+			{/loop}
+		</div>
+		<div class="hot-article-content">
+			{loop table="article" tid="95" image="1" orderby="orders|desc,addtime|desc" limit="4"} 
+			{if($v['n'] == 1)}
+			<div class="current fl">
+				<a href="{$v['url']}"><img class="current-img" src="{$v['litpic']}" width="462" alt=""></a>
+				<div class="current-detail">
+					<i class="fl"><img src="/60/images/point.png" alt=""></i>
+					<div class="hot-article-detail fl">
+						<a href="{$v['url']}">{$v['title']}</a>
+						<p>{$v['description']}</p>
+					</div>
+				</div>
+			</div>
+			{/if}
+			{/loop}
+			<div class="others fr">
+				<ul>
+					{loop table="article" tid="95" image="1" orderby="orders|desc,addtime|desc" limit="4"} 
+					{if($v['n'] != 1)}
+					<li class="item item1">
+						<a class="fl" href="{$v['url']}"><img src="{$v['litpic']}" width="139" height="93" alt=""></a>
+						<i class="fl"><img src="/60/images/point.png" alt=""></i>
+						<div class="hot-article-detail fr">
+							<a href="{$v['url']}">{$v['title']}</a>
+							<p>{$v['description']}</p>
+						</div>
+						<div class="clear"></div>
+					</li>
+					{/if}
+					{/loop}
+				</ul>
+			</div> <!--Others-->
+			<div class="clear"></div>
+		</div> <!--hot-article-content-->
+	</div> <!--index-hot-article-->
+
+	<div class="public-comWidth index-new-article">
+		<div class="title">
+			<span class="fl">其他文章</span>
+			{loop table="classtype" tid="96" limit="1"}
+			<a class="fr" href="{$v['url']}">查看更多</a>
+			{/loop}
+		</div>
+		<div class="new-article-content">
+			<ul class="fl">
+				{loop table="article" tid="95" image="2" orderby="orders|desc,addtime|desc" limit="12"} 
+				{if($v['n'] % 7 == 1)}
+			</ul>
+			<ul class="column-right fl">
+				{/if}
+				<li class="item">
+					<i class="fl"><img src="/60/images/point.png" alt=""></i>
+					<a class="fl" href="{$v['url']}">{$v['title']}</a>
+					<div class="clear"></div>
+				</li>
+				{/loop}
+			</ul>
+			<div class="clear"></div>
+		</div>
+	</div>
+ 
+	<footer class="public-footer">
+		<div class="public-comWidth public-footer-container">
+			<div class="fl">Copyright &copy; 2017 上海市城市规划设计研究院 版权所有&nbsp;&nbsp;&nbsp;地址:上海市铜仁路331号&nbsp;&nbsp;沪ICP备09002944号</div>
+			<div class="fr footer-right"><img src="/60/images/footer-right.png" alt="事业单位"></div>
+		</div>
+	</footer>
+</body>
+
+</html>

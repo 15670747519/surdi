@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$article['title']}</title>
+    <meta name="keywords" content="{$article['keywords']}">
+    <meta name="description" content="{$article['description']}">
+    <link href="{$GLOBALS['WWW']}favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="{$GLOBALS['skin']}css/style.css" type="text/css"/>
+    <script type="text/javascript">
+        var site_dir="{$GLOBALS['WWW']}";
+    </script>
+    <script type="text/javascript" src="{$GLOBALS['skin']}js/jquery-1.8.2.min.js"></script>
+    <script src="{$GLOBALS['skin']}Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="{$GLOBALS['skin']}js/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="{$GLOBALS['skin']}js/js.js"></script>
+</head>
+<body>
+    {include="head.html"}
+    <div class="main">
+        <div class="center">
+            <div class="mainleft w766">
+                <div class="border1  oh"><!--面包屑部分-->
+                    <div class="border2  oh">
+                        <div class="border3  oh">
+                            <div class="crumbs">
+                                <div class="crumbsbg"></div>
+                                {$positions} 
+                            </div>
+                        </div>
+                    </div>
+                </div><!--border1 end--><!--面包屑部分结束-->
+
+                <div class="border1 mt15  oh"><!--主内容部分开始-->
+                    <div class="border2  oh">
+                        <div class="border3  oh">
+                            <div class="article">
+                                <div class="title">{$article['title']}</div>
+                                <div class="info">
+                                    <div class="in">
+                                        <img src="{$GLOBALS['skin']}images/infospot.gif">
+                                        <span>来源：{$article['user']}</span>
+                                        <img class="ml15" src="{$GLOBALS['skin']}images/infospot.gif">
+                                        <span>{fun date('Y-m-d H:i:s',$article['addtime'])}</span>
+                                        <img class="ml15" src="{$GLOBALS['skin']}images/infospot.gif">
+                                        <span>点击：<script src="{$GLOBALS['WWW']}index.php?c=article&a=hits&id={$article['id']}" type="text/javascript"></script></span>
+                                        <img src="{$GLOBALS['skin']}images/infospot.gif">
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    {$article['body']}
+                                </div>
+                                <div class="other">
+                                    {if($aprev)}
+                                    <div class="next mt15">上一篇：<a href="{$aprev['url']}">{$aprev['title']}</a></div>
+                                    {/if}
+                                    {if($anext)}
+                                    <div class="next mt10">下一篇：<a href="{$anext['url']}">{$anext['title']}</a></div>
+                                    {/if}
+                                    <div class="back"><a href="{$back}">返回</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--border1 end--><!--主内容部分结束-->
+
+            </div><!--mainleft end-->
+
+            <div class="mainright w236">
+                {include="right.html"}
+            </div><!--mainright end-->
+        </div><!--center end-->
+    </div><!--main end-->
+    {include="bottom.html"}
+</body>
+</html>

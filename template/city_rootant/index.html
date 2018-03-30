@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$GLOBALS['S']['title']}</title>
+    <meta name="keywords" content="{$GLOBALS['S']['keywords']} ">
+    <meta name="description" content="{$GLOBALS['S']['description']} ">
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="{$GLOBALS['skin']}css/style.css" type="text/css"/>
+    <script type="text/javascript">
+        var site_dir="{$GLOBALS['WWW']}";
+    </script>
+    <script type="text/javascript" src="{$GLOBALS['skin']}js/jquery.min.js"></script>
+    <script src="{$GLOBALS['skin']}Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="{$GLOBALS['skin']}js/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="{$GLOBALS['skin']}js/js.js"></script>
+</head>
+<body class="outer">
+    {include="head.html"}
+    <div class="mainouter">
+        <div class="center">
+            <div class="outerslide">
+                <ul class="hd">
+                    {loop table="ads" taid="5" type="1" limit="1"}
+                    <li class="slide1"><h1 class="s_title">01 创新引领</h1><div class="s_sumy"><a href="{$v['gourl']}">{$v['name']}</a></div></li>
+                    {/loop}
+                    {loop table="ads" taid="6" type="1" limit="1"}
+                    <li class="slide2"><h1 class="s_title">02 主体规划</h1><div class="s_sumy"><a href="{$v['gourl']}">{$v['name']}</a></div></li>
+                    {/loop}
+                    {loop table="ads" taid="7" type="1" limit="1"}
+                    <li class="slide3"><h1 class="s_title">03 延伸服务</h1><div class="s_sumy"><a href="{$v['gourl']}">{$v['name']}</a></div></li>
+                    {/loop}
+                    {loop table="ads" taid="8" type="1" limit="1"}
+                    <li class="slide4"><h1 class="s_title">04 上海总规 2035</h1><div class="s_sumy"><a href="{$v['gourl']}">{$v['name']}</a></div></li>
+                    {/loop}
+                </ul>
+                <div class="slide-inner">
+                    <div class="hd_btm">
+                        <div class="prev"></div>
+                        <ul class="hd1 clearfix">
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                        <div class="next"></div>
+                    </div>
+                    <ul class="bd"  style="overflow: hidden; height: 369px;">
+                        {loop table="ads" taid="5" type="1" limit="1"}
+                        <li>{$v['body']}</li>
+                        {/loop}
+                        {loop table="ads" taid="6" type="1" limit="1"}
+                        <li>{$v['body']}</li>
+                        {/loop}
+                        {loop table="ads" taid="7" type="1" limit="1"}
+                        <li>{$v['body']}</li>
+                        {/loop}
+                        {loop table="ads" taid="8" type="1" limit="1"}
+                        <li>{$v['body']}</li>
+                        {/loop}
+                    </ul>
+                </div>
+            </div>
+            <div class="outernews">
+                <ul>
+                    {loop table="article" trait="1" orderby="orders|desc,addtime|desc" limit="4"}  
+                    <li>
+                        <a href="{$v['url']}">
+                        {if ($v['litpic'])}
+                        <img src="{$v['litpic']}" alt="">
+                        {/if}
+                        <span class="title"{if (!$v['litpic'])} style="width:220px;"{/if}>{if ($v['litpic'])}{fun newstr($v['title'],16)}{else}{fun newstr($v['title'],34)}{/if}</span>
+                        <span class="time"{if (!$v['litpic'])} style="width:220px;"{/if}>{fun date('Y/m/d',$v['addtime'])}</span>
+                        <span class="intro"{if (!$v['litpic'])} style="width:220px;"{/if}>{if ($v['litpic'])}{fun newstr($v['description'],70)}{else}{fun newstr($v['description'],100)}{/if}</span>
+                        </a>
+                    </li>
+                    {/loop}
+                </ul>
+            </div>
+        </div><!--center end-->
+    </div><!--main end--> 
+    {include="bottom.html"}
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div class="leaderpagesider">
+    <div class="listsidebar">
+        <div class="active"><a href="javascript:;">热门</a></div>
+        <div class="normal"><a href="javascript:;">最新</a></div>
+        <ul style="display:block;">
+            {loop table="article" tid="$type['tid']" orderby="orders|desc,hits|desc" limit="10"} 
+            <li><a href="{$v['url']}"><span class="num">{$v['n']}</span><span>{fun newstr($v['title'],18)}</span></a></li>
+            {/loop}
+        </ul>
+        <ul>
+            {loop table="article" tid="$type['tid']" orderby="orders|desc,addtime|desc" limit="10"} 
+            <li><a href="{$v['url']}"><span class="num">{$v['n']}</span><span>{fun newstr($v['title'],18)}</span></a></li>
+            {/loop}
+        </ul>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.listsidebar div').hover(function(){
+            $(this).siblings('div').attr('class','normal');
+            $(this).attr('class','active').parent().children('ul').hide().eq($(this).index()).show();
+        });
+    })
+</script>
